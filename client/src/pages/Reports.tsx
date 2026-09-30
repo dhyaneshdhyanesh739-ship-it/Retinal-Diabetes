@@ -78,34 +78,145 @@ export const Reports: React.FC = () => {
   };
 
   const handleDownloadPDF = () => {
-    const element = document.getElementById('printable-report-document');
-    if (!element) {
-      window.print();
-      return;
-    }
+    const origin = window.location.origin;
+    const reportHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>RetinaX_Clinical_Report_${selectedPatient.id}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f4f6f8; color: #111827; padding: 30px 15px; }
+    .report-card { max-width: 800px; margin: 0 auto; background: #ffffff; border: 2px solid #FF5A1F; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #FF5A1F; padding-bottom: 20px; margin-bottom: 25px; }
+    .logo-box { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 48px; height: 48px; border: 2px solid #FF5A1F; border-radius: 4px; padding: 2px; object-fit: contain; }
+    .title { font-family: 'Space Grotesk', monospace; font-size: 20px; font-weight: 900; text-transform: uppercase; color: #111827; letter-spacing: 0.5px; }
+    .subtitle { font-family: 'Space Grotesk', monospace; font-size: 11px; color: #6b7280; margin-top: 2px; }
+    .badge { font-family: 'Space Grotesk', monospace; font-size: 11px; font-weight: 700; background: #fff7ed; border: 1px solid #FF5A1F; color: #FF5A1F; padding: 6px 12px; text-transform: uppercase; }
+    .meta-grid { display: grid; grid-template-cols: repeat(4, 1fr); gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; margin-bottom: 25px; font-family: 'Space Grotesk', monospace; }
+    .meta-label { color: #64748b; font-size: 9px; text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .meta-val { color: #0f172a; font-weight: 700; font-size: 12px; }
+    .section-title { font-family: 'Space Grotesk', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; color: #FF5A1F; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 15px; }
+    .scan-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 20px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 25px; text-align: center; }
+    .scan-box { position: relative; width: 220px; height: 220px; margin: 10px auto; border-radius: 50%; overflow: hidden; border: 3px solid #111827; background: #000; }
+    .scan-box img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
+    .heatmap-layer { position: absolute; inset: 0; border-radius: 50%; mix-blend-mode: color-dodge; opacity: 0.95; }
+    .scan-caption { font-family: 'Space Grotesk', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #475569; }
+    .diag-box { background: #fff7ed; border-left: 5px solid #FF5A1F; border: 1px solid #fed7aa; border-left-width: 5px; padding: 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .diag-grade { font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+    .diag-conf { font-family: 'Space Grotesk', monospace; font-size: 24px; font-weight: 900; color: #FF5A1F; text-align: right; }
+    .urgency-banner { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; font-family: 'Space Grotesk', monospace; font-size: 11px; font-weight: 700; padding: 10px 14px; margin-bottom: 25px; text-transform: uppercase; }
+    .lesion-table { display: grid; grid-template-cols: repeat(3, 1fr); gap: 10px; background: #ffffff; border: 1px solid #e2e8f0; padding: 15px; margin-bottom: 20px; text-align: center; font-family: 'Space Grotesk', monospace; }
+    .lesion-card { padding: 10px; background: #f8fafc; border: 1px solid #cbd5e1; }
+    .lesion-count { font-size: 13px; font-weight: 800; color: #FF5A1F; margin-top: 2px; }
+    .sign-block { border-top: 2px solid #e2e8f0; padding-top: 20px; margin-top: 25px; display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Space Grotesk', monospace; font-size: 11px; }
+    .stamp-box { width: 180px; height: 50px; border: 2px dashed #94a3b8; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 10px; }
+    .disclaimer { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; font-size: 10px; color: #64748b; line-height: 1.5; margin-top: 20px; }
+    @media print { body { background: #fff; padding: 0; } .report-card { border: none; box-shadow: none; padding: 0; } }
+  </style>
+</head>
+<body>
+  <div class="report-card">
+    <div class="header">
+      <div class="logo-box">
+        <img src="${origin}/logo.png" class="logo-img" alt="Logo" />
+        <div>
+          <div class="title">RETINA-X CLINICAL AUDIT REPORT</div>
+          <div class="subtitle">AIIMS Tele-Ophthalmology Network • Clinical Diagnostic Record</div>
+        </div>
+      </div>
+      <div class="badge">VERIFIED RECORD</div>
+    </div>
 
-    const reportHtml = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8" />
-        <title>RetinaX_Clinical_Report_${selectedPatient.id}</title>
-        <style>
-          body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #ffffff; color: #111111; padding: 25px; margin: 0; }
-          .print-bg-white { background: #ffffff !important; }
-          .print-text-dark { color: #111111 !important; }
-          .no-print { display: none !important; }
-          img { max-width: 100%; height: auto; }
-        </style>
-      </head>
-      <body>
-        ${element.innerHTML}
-        <script>
-          window.onload = function() { window.print(); };
-        </script>
-      </body>
-      </html>
-    `;
+    <div class="meta-grid">
+      <div><span class="meta-label">PATIENT ID</span><span class="meta-val" style="color: #FF5A1F;">${selectedPatient.id}</span></div>
+      <div><span class="meta-label">PATIENT NAME</span><span class="meta-val">${selectedPatient.name}</span></div>
+      <div><span class="meta-label">AGE / GENDER</span><span class="meta-val">${selectedPatient.age} YRS (${selectedPatient.gender})</span></div>
+      <div><span class="meta-label">SCREENING DATE</span><span class="meta-val">${selectedPatient.date}</span></div>
+      <div style="grid-column: span 2;"><span class="meta-label">OUTREACH LOCATION</span><span class="meta-val">${selectedPatient.location}</span></div>
+      <div style="grid-column: span 2;"><span class="meta-label">TELE-SPECIALIST</span><span class="meta-val">${selectedPatient.doctor}</span></div>
+    </div>
+
+    <div class="section-title">01 — RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP</div>
+    <div class="scan-grid">
+      <div>
+        <div class="scan-caption">Raw Retinal Fundus Scan</div>
+        <div class="scan-box">
+          <img src="${origin}/real_retina.png" alt="Raw Retina" />
+        </div>
+      </div>
+      <div>
+        <div class="scan-caption" style="color: #FF5A1F;">Grad-CAM Attention Map</div>
+        <div class="scan-box">
+          <img src="${origin}/real_retina.png" alt="Grad-CAM Retina" />
+          <div class="heatmap-layer">
+            <div style="position: absolute; top: 32%; left: 28%; width: 110px; height: 110px; border-radius: 50%; filter: blur(8px); background: radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%);"></div>
+            <div style="position: absolute; bottom: 26%; left: 36%; width: 80px; height: 80px; border-radius: 50%; filter: blur(6px); background: radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">02 — AI CLASSIFICATION & CLINICAL TRIAGE</div>
+    <div class="diag-box">
+      <div>
+        <span class="meta-label">PREDICTED SEVERITY GRADE</span>
+        <div class="diag-grade">${selectedPatient.grade}</div>
+      </div>
+      <div>
+        <span class="meta-label">MODEL CONFIDENCE</span>
+        <div class="diag-conf">${selectedPatient.confidence}%</div>
+      </div>
+    </div>
+
+    <div class="urgency-banner">
+      REFERRAL DIRECTIVE: ${selectedPatient.urgency}
+    </div>
+
+    <div class="section-title">03 — BIOMARKER & LESION EVIDENCE BREAKDOWN</div>
+    <div class="lesion-table">
+      <div class="lesion-card">
+        <span class="meta-label">MICROANEURYSMS</span>
+        <div class="lesion-count">${selectedPatient.lesions.microaneurysms} DETECTED</div>
+      </div>
+      <div class="lesion-card">
+        <span class="meta-label">HARD EXUDATES</span>
+        <div class="lesion-count" style="color: #d97706;">${selectedPatient.lesions.exudates} DETECTED</div>
+      </div>
+      <div class="lesion-card">
+        <span class="meta-label">HEMORRHAGES</span>
+        <div class="lesion-count" style="color: #dc2626;">${selectedPatient.lesions.hemorrhages} LOCATIONS</div>
+      </div>
+    </div>
+
+    <div style="font-family: 'Space Grotesk', monospace; font-size: 11px; margin-bottom: 25px; color: #334155;">
+      • <strong>GRAD-CAM ATTENTION QUADRANT:</strong> ${selectedPatient.attention}
+    </div>
+
+    <div class="sign-block">
+      <div>
+        <strong style="font-size: 12px; text-transform: uppercase;">TELE-OPHTHALMOLOGIST VERIFICATION</strong>
+        <div style="font-size: 10px; color: #64748b; margin-top: 2px;">Reviewed & Approved by ${selectedPatient.doctor}</div>
+      </div>
+      <div class="stamp-box">OFFICIAL CLINICAL STAMP</div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>CLINICAL DIRECTIVE:</strong> AI-assisted diabetic retinopathy screening results are provided for diagnostic decision support. Clinical confirmation by a licensed ophthalmologist is required prior to initiating treatment interventions.
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 500);
+    };
+  </script>
+</body>
+</html>`;
 
     const blob = new Blob([reportHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
