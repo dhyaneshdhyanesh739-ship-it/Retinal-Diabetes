@@ -57,7 +57,7 @@ export const Screening: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-2 font-mono text-xs text-accent-gold">
                 <span className="w-2 h-2 rounded-full bg-accent-orange animate-ping" />
-                SIH26038 • MEMBER 4 SCREENING WORKFLOW & RURAL SIMULATION
+                EXPLAINABLE AI SCREENING WORKFLOW & RURAL SIMULATION
               </div>
               <h1 className="text-3xl md:text-5xl font-black font-sans uppercase text-text-primary tracking-tight">
                 AI Retinal Screening Console

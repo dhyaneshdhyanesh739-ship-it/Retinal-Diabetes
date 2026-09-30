@@ -218,7 +218,7 @@ export const Home: React.FC = () => {
             number="09"
             eyebrow="System Modular Spec"
             title="TECHNOLOGY ARCHITECTURE"
-            description="Multi-tiered MERN stack & Deep Learning explainability engine built for MathWorks SIH26038 problem statement."
+            description="Multi-tiered MERN stack & Deep Learning explainability engine built for clinical deployment."
           />
           <ArchitectureDiagram />
         </div>
@@ -229,7 +229,7 @@ export const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
           <div>
             <span className="font-mono text-xs uppercase font-bold text-accent-orange px-3 py-1 bg-accent-orange/10 border border-accent-orange">
-              10 — SIH26038 Performance Benchmark
+              10 — Performance Benchmark
             </span>
             <h2 className="text-3xl md:text-5xl font-black font-sans uppercase text-text-primary mt-4">
               Proven Performance Metrics
@@ -260,7 +260,7 @@ export const Home: React.FC = () => {
       {/* 12 — Final CTA Section */}
       <section className="py-24 bg-gradient-to-b from-bg-dark to-bg-darkest relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10">
-          <Badge variant="gold">SIH26038 • MATHWORKS THEME</Badge>
+          <Badge variant="gold">EXPLAINABLE AI CLINICAL THEME</Badge>
           <h2 className="text-4xl sm:text-6xl font-black font-sans uppercase tracking-tight text-text-primary">
             See the Retina. <br />
             Understand the AI.

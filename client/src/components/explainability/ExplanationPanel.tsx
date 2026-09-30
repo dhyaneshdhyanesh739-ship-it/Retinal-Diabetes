@@ -61,8 +61,8 @@ export const ExplanationPanel: React.FC = () => {
 
       {/* MathWorks XAI Framework note */}
       <div className="p-3 bg-surface-1 border border-surface-border text-[11px] font-mono text-text-muted flex items-center justify-between">
-        <span>Framework: MathWorks Deep Learning Toolbox + Grad-CAM</span>
-        <span className="text-accent-orange">SIH26038 Benchmark</span>
+        <span>Framework: Deep Learning Toolbox + Grad-CAM</span>
+        <span className="text-accent-orange">Clinical Benchmark</span>
       </div>
     </div>
   );

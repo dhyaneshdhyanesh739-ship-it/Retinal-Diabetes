@@ -183,7 +183,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'ONLINE',
     system: 'RETINA-X XAI Engine',
-    version: '2.4.0-SIH26038',
+    version: '2.4.0',
     theme: 'MathWorks Explainable AI Theme',
     backend: 'Node.js Express + Mongoose API',
     aiModel: 'EfficientNet-B4 / ResNet50 + Grad-CAM Explainability Pipeline',

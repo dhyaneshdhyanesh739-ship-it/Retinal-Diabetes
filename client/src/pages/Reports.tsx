@@ -78,8 +78,44 @@ export const Reports: React.FC = () => {
   };
 
   const handleDownloadPDF = () => {
-    // Open browser native print dialog pre-configured for A4 Save as PDF
-    window.print();
+    const element = document.getElementById('printable-report-document');
+    if (!element) {
+      window.print();
+      return;
+    }
+
+    const reportHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>RetinaX_Clinical_Report_${selectedPatient.id}</title>
+        <style>
+          body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #ffffff; color: #111111; padding: 25px; margin: 0; }
+          .print-bg-white { background: #ffffff !important; }
+          .print-text-dark { color: #111111 !important; }
+          .no-print { display: none !important; }
+          img { max-width: 100%; height: auto; }
+        </style>
+      </head>
+      <body>
+        ${element.innerHTML}
+        <script>
+          window.onload = function() { window.print(); };
+        </script>
+      </body>
+      </html>
+    `;
+
+    const blob = new Blob([reportHtml], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `RetinaX_Clinical_Report_${selectedPatient.id}.html`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -140,7 +176,7 @@ export const Reports: React.FC = () => {
                   RETINA-X CLINICAL AUDIT REPORT
                 </h2>
                 <p className="font-mono text-xs text-text-muted print:text-black">
-                  AIIMS Tele-Ophthalmology Network • SIH26038 Diagnostic Record
+                  AIIMS Tele-Ophthalmology Network • Clinical Diagnostic Record
                 </p>
               </div>
             </div>
@@ -284,7 +320,7 @@ export const Reports: React.FC = () => {
             </div>
 
             <div className="p-3 bg-surface-2 border border-surface-border text-[11px] text-text-muted leading-relaxed print:bg-white print:border-gray-300 print:text-black">
-              <strong className="text-accent-gold uppercase print:text-black">SIH26038 CLINICAL DIRECTIVE:</strong>
+              <strong className="text-accent-gold uppercase print:text-black">CLINICAL DIRECTIVE:</strong>
               AI-assisted diabetic retinopathy screening results are for diagnostic decision support. Confirmation by a licensed ophthalmologist is required before clinical intervention.
             </div>
           </div>
