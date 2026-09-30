@@ -87,7 +87,7 @@ export const ScreeningResult: React.FC<ScreeningResultProps> = ({ result, onRese
           <h2 className="text-xl sm:text-2xl font-black uppercase text-text-primary leading-tight tracking-tight break-words font-sans">
             {prediction.grade_name}
           </h2>
-        </h2></div>
+        </div>
 
         {/* 2-Column Encapsulated Key Metrics Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
