@@ -139,7 +139,7 @@ export const Reports: React.FC = () => {
       <div style="grid-column: span 2;"><span class="meta-label">TELE-SPECIALIST</span><span class="meta-val">${selectedPatient.doctor}</span></div>
     </div>
 
-    <div class="section-title">RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP</div>
+    <div class="section-title">• RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP</div>
     <div class="scan-grid">
       <div>
         <div class="scan-caption">Raw Retinal Fundus Scan</div>
@@ -159,7 +159,7 @@ export const Reports: React.FC = () => {
       </div>
     </div>
 
-    <div class="section-title">AI CLASSIFICATION & CLINICAL TRIAGE</div>
+    <div class="section-title">• AI CLASSIFICATION & CLINICAL TRIAGE</div>
     <div class="diag-box">
       <div>
         <span class="meta-label">PREDICTED SEVERITY GRADE</span>
@@ -175,7 +175,7 @@ export const Reports: React.FC = () => {
       REFERRAL DIRECTIVE: ${selectedPatient.urgency}
     </div>
 
-    <div class="section-title">BIOMARKER & LESION EVIDENCE BREAKDOWN</div>
+    <div class="section-title">• BIOMARKER & LESION EVIDENCE BREAKDOWN</div>
     <div class="lesion-table">
       <div class="lesion-card">
         <span class="meta-label">MICROANEURYSMS</span>
