@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
                 </span>
               </div>
               <span className="text-[9px] font-mono uppercase tracking-widest text-text-muted">
-                SIH26038 • MathWorks
+                Ophthalmology • MathWorks
               </span>
             </div>
           </a>

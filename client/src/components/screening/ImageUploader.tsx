@@ -117,7 +117,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
       <div className="p-4 bg-surface-1 border border-surface-border">
         <div className="flex items-center justify-between mb-3">
           <span className="font-mono text-xs uppercase font-bold text-accent-gold flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" /> Quick Screening Presets (SIH Demo)
+            <Sparkles className="w-3.5 h-3.5" /> Quick Screening Presets (XAI Demo)
           </span>
           <span className="text-[10px] font-mono text-text-muted">Click to Load</span>
         </div>

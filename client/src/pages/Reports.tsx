@@ -43,7 +43,7 @@ export const Reports: React.FC = () => {
                 <h2 className="font-mono text-lg font-black uppercase text-text-primary">
                   RETINA-X CLINICAL AUDIT REPORT
                 </h2>
-                <p className="font-mono text-xs text-text-muted">SIH26038 • Explainable AI Screening Summary</p>
+                <p className="font-mono text-xs text-text-muted">Explainable AI Screening Summary</p>
               </div>
             </div>
 
@@ -102,7 +102,7 @@ export const Reports: React.FC = () => {
           {/* Disclaimer */}
           <div className="p-4 bg-surface-2 border border-surface-border font-sans text-xs text-text-muted leading-relaxed">
             <strong className="font-mono text-accent-gold uppercase block mb-1">CLINICAL SAFETY DIRECTIVE:</strong>
-            AI-assisted screening results are generated for clinical decision support under SIH26038 standards and must be verified by a licensed ophthalmologist prior to initiating treatment.
+            AI-assisted screening results are generated for clinical decision support under established medical protocols and must be verified by a licensed ophthalmologist prior to initiating treatment.
           </div>
 
         </div>

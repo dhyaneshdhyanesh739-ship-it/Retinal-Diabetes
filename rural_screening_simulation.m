@@ -1,6 +1,6 @@
 % =========================================================================
-% SIH26038: RURAL DIABETIC RETINOPATHY SCREENING WORKFLOW SIMULATION
-% Theme: MathWorks | Member 4: User Workflow & Rural Simulation
+% RURAL DIABETIC RETINOPATHY SCREENING WORKFLOW SIMULATION
+% Theme: MathWorks | User Workflow & Rural Simulation
 % =========================================================================
 % Comparison: AI-Assisted Workflow vs. Traditional Manual Specialist Workflow
 % Note: All parameters are modeled assumptions for health system evaluation.
@@ -9,7 +9,7 @@
 clear; clc; close all;
 
 fprintf('=================================================================\n');
-fprintf(' SIH26038: MATLAB Rural Screening Queue & Capacity Simulation \n');
+fprintf(' MATLAB Rural Screening Queue & Capacity Simulation \n');
 fprintf('=================================================================\n\n');
 
 %% 1. Simulation Input Assumptions (Clearly Labeled)
@@ -53,7 +53,7 @@ fprintf(' Average Patient Turnaround Time     | %11.1f days | %15.2f hours\n', m
 fprintf('=================================================================\n\n');
 
 %% 4. Plot Comparison Visualizations
-figure('Name', 'SIH26038 Rural DR Screening Simulation', 'Color', [0.05 0.05 0.05]);
+figure('Name', 'Rural DR Screening Simulation', 'Color', [0.05 0.05 0.05]);
 
 % Subplot 1: Turnaround Time Comparison
 subplot(1, 2, 1);

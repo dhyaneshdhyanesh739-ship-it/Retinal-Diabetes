@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-1 border border-accent-orange/40 shadow-brutal-dark">
               <span className="w-2 h-2 rounded-full bg-accent-orange animate-ping" />
               <span className="font-mono text-xs uppercase tracking-widest text-accent-gold font-bold">
-                SIH26038 • Explainable AI • Ophthalmology
+                Explainable AI • Ophthalmology
               </span>
             </div>
 

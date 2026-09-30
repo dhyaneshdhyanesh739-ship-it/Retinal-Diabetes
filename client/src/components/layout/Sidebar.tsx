@@ -24,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeItem = 'dashboard' }) =>
     { id: 'reports', label: 'Reports', icon: <FileText className="w-4 h-4" />, href: '/reports' },
     { id: 'explainability', label: 'XAI Heatmaps', icon: <Activity className="w-4 h-4" />, href: '/explainability' },
     { id: 'architecture', label: 'System Spec', icon: <Shield className="w-4 h-4" />, href: '/architecture' },
-    { id: 'about', label: 'About & SIH', icon: <BarChart3 className="w-4 h-4" />, href: '/about' },
+    { id: 'about', label: 'About & Mission', icon: <BarChart3 className="w-4 h-4" />, href: '/about' },
   ];
 
   return (

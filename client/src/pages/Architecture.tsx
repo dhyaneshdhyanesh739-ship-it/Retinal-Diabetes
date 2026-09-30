@@ -12,7 +12,7 @@ export const Architecture: React.FC = () => {
           
           <SectionHeader
             number="09"
-            eyebrow="SIH26038 Engineering Specs"
+            eyebrow="Engineering Specifications"
             title="SYSTEM ARCHITECTURE"
             description="Deep-dive specification of our Explainable AI stack, MERN backend REST APIs, and edge deployment pipeline."
           />

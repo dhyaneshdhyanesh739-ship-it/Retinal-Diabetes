@@ -1,6 +1,6 @@
 # RETINA-X — Explainable AI for Diabetic Retinopathy Screening in Rural India
 
-**SIH26038 | MathWorks Theme | Smart India Hackathon 2026**
+**MathWorks Theme | Explainable AI Platform**
 
 RETINA-X is a production-quality MERN stack platform designed for AI-assisted diabetic retinopathy (DR) screening in accessible rural healthcare environments. Built with **Grad-CAM Explainable AI (XAI)**, pixel-level attention visualizers, and offline-first edge architecture for low-bandwidth outreach clinics.
 

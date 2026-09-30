@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
             </p>
           </div>
           <span className="text-[10px] font-mono uppercase tracking-widest text-accent-orange px-2 py-1 bg-accent-orange/10 border border-accent-orange/30 whitespace-nowrap">
-            SIH26038 Compliant
+            XAI Protocol Compliant
           </span>
         </div>
 
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-text-secondary leading-relaxed font-sans">
-              Royal Medical AI Command Center for Explainable Diabetic Retinopathy Screening in Rural India. Built for MathWorks SIH26038 challenge.
+              Royal Medical AI Command Center for Explainable Diabetic Retinopathy Screening in Rural India. Built for MathWorks AI Challenge.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs font-mono text-text-muted">
               <span>Theme: MathWorks</span>
@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
               Designed to empower Accredited Social Health Activists (ASHA) and rural health workers in non-networked clinics across tier-3 and village centers.
             </p>
             <div className="p-3 bg-surface-1 border border-surface-border text-[11px] font-mono text-text-muted">
-              <span className="text-accent-gold font-bold">SIH Problem ID:</span> SIH26038<br />
+              <span className="text-accent-gold font-bold">Platform Category:</span> Explainable Healthcare AI<br />
               <span className="text-text-secondary">Theme: Healthcare & Explainable AI</span>
             </div>
           </div>
