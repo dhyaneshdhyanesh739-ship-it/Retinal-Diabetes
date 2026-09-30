@@ -26,12 +26,17 @@ export const Footer: React.FC = () => {
           
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
-            <a href="/" className="inline-block">
-              <img 
-                src="/logo.png" 
-                alt="Retina-X Logo" 
-                className="h-12 w-auto object-contain rounded bg-white/95 px-1 py-0.5 border border-accent-orange/40 shadow-md" 
-              />
+            <a href="/" className="flex items-center gap-3 group">
+              <div className="w-11 h-11 bg-white border border-accent-orange flex items-center justify-center shadow-brutal rounded overflow-hidden flex-shrink-0">
+                <img 
+                  src="/logo.png" 
+                  alt="Retina-X Logo" 
+                  className="w-full h-full object-contain p-0.5" 
+                />
+              </div>
+              <span className="font-mono font-black text-xl text-text-primary uppercase tracking-wider">
+                RETINA<span className="text-accent-orange">-X</span>
+              </span>
             </a>
             <p className="text-xs text-text-secondary leading-relaxed font-sans">
               Royal Medical AI Command Center for Explainable Diabetic Retinopathy Screening in Rural India. Built for MathWorks SIH26038 challenge.

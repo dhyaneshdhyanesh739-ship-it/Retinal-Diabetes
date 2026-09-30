@@ -44,12 +44,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group">
-            <img 
-              src="/logo.png" 
-              alt="Retina-X Logo" 
-              className="h-10 sm:h-12 w-auto object-contain rounded bg-white/95 px-1 py-0.5 border border-accent-orange/40 group-hover:scale-[1.03] transition-transform shadow-md" 
-            />
+          <a href="/" className="flex items-center gap-3 group">
+            <div className="relative w-11 h-11 bg-white border border-accent-orange flex items-center justify-center shadow-brutal rounded overflow-hidden group-hover:scale-105 transition-transform flex-shrink-0">
+              <img 
+                src="/logo.png" 
+                alt="Retina-X Logo" 
+                className="w-full h-full object-contain p-0.5" 
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="font-mono font-black text-lg text-text-primary tracking-wider uppercase">
+                RETINA<span className="text-accent-orange">-X</span>
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
