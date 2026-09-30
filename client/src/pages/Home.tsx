@@ -110,15 +110,17 @@ export const Home: React.FC = () => {
             <h3 className="text-2xl md:text-4xl font-black font-sans uppercase text-text-primary max-w-2xl mx-auto">
               Ready to test the Explainable AI Screening Workstation?
             </h3>
-            <p className="text-sm text-text-secondary max-w-xl mx-auto font-sans">
+            <p className="text-sm text-text-secondary max-w-xl mx-auto font-sans pb-2">
               Test pre-loaded sample retinal scans or drag and drop custom fundus images to view Grad-CAM attention maps.
             </p>
 
-            <a href="/screening">
-              <Button variant="primary" size="lg" icon={<ArrowRight className="w-5 h-5" />}>
-                Launch Screening Workstation
-              </Button>
-            </a>
+            <div className="pt-4 flex justify-center">
+              <a href="/screening">
+                <Button variant="primary" size="lg" icon={<ArrowRight className="w-5 h-5" />}>
+                  Launch Screening Workstation
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
