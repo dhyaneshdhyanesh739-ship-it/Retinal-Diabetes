@@ -5,7 +5,7 @@ export const HeatmapViewer: React.FC = () => {
   const [opacity, setOpacity] = useState(0.85);
   const [mode, setMode] = useState<'overlay' | 'side-by-side' | 'raw'>('overlay');
 
-  const sampleRetinaUrl = "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80";
+  const sampleRetinaUrl = "/real_retina.png";
 
   return (
     <div className="brutal-card p-6 space-y-6">
