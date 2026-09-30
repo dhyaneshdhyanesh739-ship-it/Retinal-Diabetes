@@ -14,7 +14,6 @@ export const ExplanationPanel: React.FC = () => {
             Clinical Decision Support Explanation
           </h3>
         </div>
-        <Badge variant="info">XAI v2.4</Badge>
       </div>
 
       <div className="space-y-4 font-mono text-xs">
