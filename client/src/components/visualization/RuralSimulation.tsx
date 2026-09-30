@@ -35,24 +35,19 @@ export const RuralSimulation: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-surface-border pb-4 font-mono">
         <div>
           <span className="text-xs text-accent-gold font-bold uppercase block mb-1">
-            MATLAB / SIMULINK WORKFLOW EVALUATOR • MEMBER 4
+            RURAL OUTREACH CAPACITY EVALUATOR
           </span>
           <h3 className="text-xl font-bold uppercase text-text-primary flex items-center gap-2">
             <Activity className="w-5 h-5 text-accent-orange" />
             Rural Healthcare Screening Capacity Model
           </h3>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] text-text-muted bg-surface-2 px-2.5 py-1 border border-surface-border">
-            Script: rural_screening_simulation.m
-          </span>
-        </div>
       </div>
 
       {/* Assumptions Label Warning */}
       <div className="p-3 bg-surface-2 border border-surface-border text-xs font-mono text-text-secondary flex items-start gap-2">
-        <span className="font-bold text-accent-gold uppercase whitespace-nowrap">[SIMULATION NOTE]:</span>
-        <span>All parameter inputs are modeled health system assumptions for rural PHC screening evaluation.</span>
+        <span className="font-bold text-accent-gold uppercase whitespace-nowrap">[CLINICAL CAPACITY NOTE]:</span>
+        <span>Interactive parameters model health system throughput and turnaround times for rural outreach clinics.</span>
       </div>
 
       {/* Interactive Controls Grid */}
@@ -93,7 +88,7 @@ export const RuralSimulation: React.FC = () => {
         {/* Slider 3: Doctor Daily Capacity */}
         <div className="p-4 bg-surface-2 border border-surface-border space-y-2">
           <div className="flex justify-between text-text-muted">
-            <span>DOCTOR REVIEW CAPACITY:</span>
+            <span>TELE-DOCTOR DAILY CAPACITY:</span>
             <span className="font-bold text-accent-gold">{humanReviewCapacity} cases/day</span>
           </div>
           <input
@@ -166,19 +161,11 @@ export const RuralSimulation: React.FC = () => {
       </div>
 
       {/* Impact Summary Banner */}
-      <div className="p-4 bg-surface-2 border border-accent-orange flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs">
-        <div className="flex items-center gap-3">
-          <CheckCircle2 className="w-5 h-5 text-status-success flex-shrink-0" />
-          <span>
-            <strong className="text-accent-orange font-bold">{hoursSaved} HOURS</strong> of specialist doctor time saved per day for <strong>{patientsPerDay} patients</strong>.
-          </span>
-        </div>
-
-        <a href="/rural_screening_simulation.m" download>
-          <Button variant="secondary" size="sm" icon={<FileCode className="w-4 h-4" />}>
-            Download MATLAB Script
-          </Button>
-        </a>
+      <div className="p-4 bg-surface-2 border border-accent-orange flex items-center gap-3 font-mono text-xs">
+        <CheckCircle2 className="w-5 h-5 text-status-success flex-shrink-0" />
+        <span>
+          <strong className="text-accent-orange font-bold">{hoursSaved} HOURS</strong> of specialist doctor time saved per day for <strong>{patientsPerDay} patients</strong>.
+        </span>
       </div>
 
     </div>

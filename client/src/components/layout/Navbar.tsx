@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
     { label: 'Explainability', href: '/explainability' },
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'Technology', href: '/architecture' },
-    { label: 'Rural Access', href: '/#rural-access' },
+    { label: 'Rural Access', href: '/rural-access' },
     { label: 'About', href: '/about' },
   ];
 
