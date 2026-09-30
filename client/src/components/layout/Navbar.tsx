@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Eye, Activity, ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from '../common/Button';
 
 interface NavbarProps {
@@ -27,7 +27,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
     { label: 'Screening', href: '/screening' },
     { label: 'Explainability', href: '/explainability' },
     { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Technology', href: '/architecture' },
     { label: 'Rural Access', href: '/rural-access' },
     { label: 'About', href: '/about' },
   ];
@@ -84,10 +83,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
 
           {/* Right Action */}
           <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center gap-2 px-2.5 py-1 bg-surface-2 border border-surface-border text-[11px] font-mono text-status-success">
-              <span className="w-2 h-2 rounded-full bg-status-success animate-ping" />
-              SYSTEM ONLINE
-            </div>
             <a href="/screening">
               <Button variant="primary" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
                 Launch Screening

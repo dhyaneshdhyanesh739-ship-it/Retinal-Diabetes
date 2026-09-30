@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5001/api';
+const API_BASE_URL = 'http://localhost:8000/api';
 
 export async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
   try {

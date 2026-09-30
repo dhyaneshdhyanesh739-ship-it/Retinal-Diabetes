@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, ShieldAlert, Activity, Sparkles, Layers, Zap } from 'lucide-react';
+import { Eye, ShieldAlert, Activity, Sparkles, Layers } from 'lucide-react';
 
 export const RetinalVisualization: React.FC = () => {
   const [activeLayer, setActiveLayer] = useState<'scan' | 'heatmap' | 'vessels'>('heatmap');

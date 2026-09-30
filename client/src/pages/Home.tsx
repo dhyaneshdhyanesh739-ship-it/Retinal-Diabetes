@@ -3,7 +3,6 @@ import { PublicLayout } from '../layouts/PublicLayout';
 import { Hero } from '../components/hero/Hero';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { Workflow } from '../components/visualization/Workflow';
-import { ArchitectureDiagram } from '../components/visualization/ArchitectureDiagram';
 import { HeatmapViewer } from '../components/explainability/HeatmapViewer';
 import { ExplanationPanel } from '../components/explainability/ExplanationPanel';
 import { Button } from '../components/common/Button';
@@ -211,18 +210,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 09 — Technology Architecture */}
-      <section className="py-20 bg-bg-dark border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            number="09"
-            eyebrow="System Modular Spec"
-            title="TECHNOLOGY ARCHITECTURE"
-            description="Multi-tiered MERN stack & Deep Learning explainability engine built for clinical deployment."
-          />
-          <ArchitectureDiagram />
-        </div>
-      </section>
 
       {/* 10 & 11 — Statistics & Trust */}
       <section className="py-20 bg-bg-darkest border-b border-surface-border">

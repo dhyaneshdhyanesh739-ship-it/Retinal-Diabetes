@@ -2,7 +2,7 @@ import React from 'react';
 import { PublicLayout } from '../layouts/PublicLayout';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { ArchitectureDiagram } from '../components/visualization/ArchitectureDiagram';
-import { Layers, Server, Cpu, Database, Shield, Code2, Terminal, ArrowRight } from 'lucide-react';
+import { Server, Cpu, Database, Shield, Code2, Terminal } from 'lucide-react';
 
 export const Architecture: React.FC = () => {
   return (
