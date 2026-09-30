@@ -52,7 +52,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
   const vesselTrees = [
     // Tree 0: Superior-Inferior Temporal Arcades
     (
-      <g stroke="#FF5A1F" strokeWidth="2.5" fill="none">
+      <g key="vessel-tree-0" stroke="#FF5A1F" strokeWidth="2.5" fill="none">
         <path d="M 210 180 Q 150 120 85 75 M 210 180 Q 270 95 340 60" />
         <path d="M 210 180 Q 130 260 70 310 M 210 180 Q 290 270 355 320" />
         <path d="M 150 120 Q 110 90 60 70 M 270 95 Q 310 70 370 50" />
@@ -60,7 +60,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
     ),
     // Tree 1: Optic Disc Vascular Root & Nasal Branches
     (
-      <g stroke="#FF3300" strokeWidth="2.5" fill="none">
+      <g key="vessel-tree-1" stroke="#FF3300" strokeWidth="2.5" fill="none">
         <path d="M 160 210 Q 110 130 50 80 M 160 210 Q 220 120 310 70" />
         <path d="M 160 210 Q 100 290 60 340 M 160 210 Q 250 300 330 350" />
         <path d="M 160 210 L 300 210 M 110 130 Q 80 100 30 70" />
@@ -68,7 +68,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
     ),
     // Tree 2: Macular Micro-Vascular Arcade
     (
-      <g stroke="#FF7A00" strokeWidth="2.5" fill="none">
+      <g key="vessel-tree-2" stroke="#FF7A00" strokeWidth="2.5" fill="none">
         <path d="M 240 160 Q 180 80 110 50 M 240 160 Q 300 90 360 80" />
         <path d="M 240 160 Q 170 240 100 290 M 240 160 Q 310 250 370 310" />
         <path d="M 240 160 L 100 160 M 180 80 Q 140 50 80 30" />
