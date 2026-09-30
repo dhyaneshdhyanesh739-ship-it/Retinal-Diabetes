@@ -85,21 +85,43 @@ export const HeatmapViewer: React.FC = () => {
             </div>
             <div className="relative aspect-square bg-bg-darkest border border-accent-orange overflow-hidden rounded-full flex items-center justify-center p-2">
               <img src={sampleRetinaUrl} alt="Heatmap" className="w-full h-full object-cover rounded-full" />
-              <div className="absolute inset-0 rounded-full bg-radial from-accent-orange via-accent-crimson/80 to-transparent blur-md mix-blend-screen opacity-90" />
+              <div 
+                className="absolute inset-0 rounded-full mix-blend-color-dodge pointer-events-none"
+                style={{ opacity: opacity }}
+              >
+                <div 
+                  className="absolute top-[32%] left-[28%] w-40 h-40 rounded-full blur-md"
+                  style={{ background: 'radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%)' }}
+                />
+                <div 
+                  className="absolute bottom-[26%] left-[36%] w-32 h-32 rounded-full blur-sm"
+                  style={{ background: 'radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%)' }}
+                />
+              </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="relative aspect-video max-h-[460px] bg-bg-darkest border border-surface-border rounded-full flex items-center justify-center overflow-hidden p-4 mx-auto max-w-xl">
-          <img src={sampleRetinaUrl} alt="Retinal Fundus" className="h-full object-cover rounded-full" />
+        <div className="relative aspect-square max-w-[420px] bg-black border-2 border-accent-orange rounded-full flex items-center justify-center overflow-hidden p-2 mx-auto shadow-royal">
+          <img src={sampleRetinaUrl} alt="Retinal Fundus" className="w-full h-full object-cover scale-[1.08] rounded-full" />
           
           {mode === 'overlay' && (
             <div
-              className="absolute inset-0 rounded-full mix-blend-screen pointer-events-none transition-opacity duration-200"
+              className="absolute inset-0 rounded-full mix-blend-color-dodge pointer-events-none transition-opacity duration-150"
               style={{ opacity }}
             >
-              <div className="absolute top-[32%] left-[38%] w-36 h-36 rounded-full bg-radial from-accent-orange via-accent-crimson/80 to-transparent blur-lg animate-pulse" />
-              <div className="absolute bottom-[35%] right-[32%] w-24 h-24 rounded-full bg-radial from-accent-bright via-accent-gold/60 to-transparent blur-md" />
+              <div 
+                className="absolute top-[32%] left-[28%] w-40 h-40 rounded-full blur-md animate-pulse" 
+                style={{ background: 'radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%)' }}
+              />
+              <div 
+                className="absolute bottom-[26%] left-[36%] w-32 h-32 rounded-full blur-sm" 
+                style={{ background: 'radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%)' }}
+              />
+              <div 
+                className="absolute top-[34%] right-[20%] w-28 h-28 rounded-full blur-md" 
+                style={{ background: 'radial-gradient(circle, #FFCC00 0%, #FF5A1F 50%, transparent 70%)' }}
+              />
             </div>
           )}
         </div>
