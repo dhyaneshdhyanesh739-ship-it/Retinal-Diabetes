@@ -49,8 +49,8 @@ export const HeatmapViewer: React.FC = () => {
         </div>
       </div>
 
-      {/* Opacity slider for heatmap overlay */}
-      {mode === 'overlay' && (
+      {/* Opacity slider for heatmap overlay & side-by-side */}
+      {mode !== 'raw' && (
         <div className="flex items-center gap-4 bg-surface-2 p-3 border border-surface-border font-mono text-xs">
           <span className="text-text-secondary flex items-center gap-1">
             <SlidersHorizontal className="w-4 h-4 text-accent-orange" /> HEATMAP OPACITY:
@@ -83,20 +83,33 @@ export const HeatmapViewer: React.FC = () => {
             <div className="text-xs font-mono uppercase text-accent-bright flex items-center gap-1">
               <Sparkles className="w-3.5 h-3.5" /> Grad-CAM Attention Map
             </div>
-            <div className="relative aspect-square bg-bg-darkest border border-accent-orange overflow-hidden rounded-full flex items-center justify-center p-2">
-              <img src={sampleRetinaUrl} alt="Heatmap" className="w-full h-full object-cover rounded-full" />
+            <div className="relative aspect-square bg-bg-darkest border-2 border-accent-orange overflow-hidden rounded-full flex items-center justify-center p-2">
+              <img src={sampleRetinaUrl} alt="Heatmap Base" className="w-full h-full object-cover rounded-full filter contrast-110 brightness-95" />
               <div 
-                className="absolute inset-0 rounded-full mix-blend-color-dodge pointer-events-none"
+                className="absolute inset-0 rounded-full pointer-events-none transition-opacity duration-150"
                 style={{ opacity: opacity }}
               >
+                {/* Hotspot 1 (Red/Orange High Attention Core) */}
                 <div 
-                  className="absolute top-[32%] left-[28%] w-40 h-40 rounded-full blur-md"
-                  style={{ background: 'radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%)' }}
+                  className="absolute top-[28%] left-[26%] w-44 h-44 rounded-full blur-md"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 0, 0, 0.95) 0%, rgba(255, 100, 0, 0.85) 35%, rgba(255, 210, 0, 0.65) 60%, rgba(0, 220, 255, 0.3) 80%, transparent 100%)' }}
                 />
+                
+                {/* Hotspot 2 (Inferior Lesion Cluster) */}
                 <div 
-                  className="absolute bottom-[26%] left-[36%] w-32 h-32 rounded-full blur-sm"
-                  style={{ background: 'radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%)' }}
+                  className="absolute bottom-[24%] left-[34%] w-36 h-36 rounded-full blur-md"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 0, 85, 0.95) 0%, rgba(255, 140, 0, 0.8) 40%, rgba(255, 230, 0, 0.6) 65%, transparent 85%)' }}
                 />
+
+                {/* Hotspot 3 (Superior Exudate Margin) */}
+                <div 
+                  className="absolute top-[34%] right-[20%] w-30 h-30 rounded-full blur-md"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 90, 31, 0.75) 50%, rgba(0, 255, 150, 0.4) 75%, transparent 90%)' }}
+                />
+
+                {/* Focal target rings */}
+                <div className="absolute top-[34%] left-[32%] w-16 h-16 border-2 border-dashed border-accent-crimson rounded-full animate-spin-slow opacity-80" />
+                <div className="absolute bottom-[30%] left-[38%] w-12 h-12 border border-accent-gold rounded-full opacity-90" />
               </div>
             </div>
           </div>
@@ -107,20 +120,20 @@ export const HeatmapViewer: React.FC = () => {
           
           {mode === 'overlay' && (
             <div
-              className="absolute inset-0 rounded-full mix-blend-color-dodge pointer-events-none transition-opacity duration-150"
+              className="absolute inset-0 rounded-full pointer-events-none transition-opacity duration-150"
               style={{ opacity }}
             >
               <div 
-                className="absolute top-[32%] left-[28%] w-40 h-40 rounded-full blur-md animate-pulse" 
-                style={{ background: 'radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%)' }}
+                className="absolute top-[30%] left-[26%] w-44 h-44 rounded-full blur-md animate-pulse" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 0, 0, 0.95) 0%, rgba(255, 100, 0, 0.85) 35%, rgba(255, 210, 0, 0.65) 60%, rgba(0, 220, 255, 0.3) 80%, transparent 100%)' }}
               />
               <div 
-                className="absolute bottom-[26%] left-[36%] w-32 h-32 rounded-full blur-sm" 
-                style={{ background: 'radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%)' }}
+                className="absolute bottom-[24%] left-[34%] w-36 h-36 rounded-full blur-md" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 0, 85, 0.95) 0%, rgba(255, 140, 0, 0.8) 40%, rgba(255, 230, 0, 0.6) 65%, transparent 85%)' }}
               />
               <div 
-                className="absolute top-[34%] right-[20%] w-28 h-28 rounded-full blur-md" 
-                style={{ background: 'radial-gradient(circle, #FFCC00 0%, #FF5A1F 50%, transparent 70%)' }}
+                className="absolute top-[34%] right-[20%] w-30 h-30 rounded-full blur-md" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 215, 0, 0.9) 0%, rgba(255, 90, 31, 0.75) 50%, rgba(0, 255, 150, 0.4) 75%, transparent 90%)' }}
               />
             </div>
           )}

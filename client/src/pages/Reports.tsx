@@ -102,7 +102,7 @@ export const Reports: React.FC = () => {
     .scan-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 20px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 25px; text-align: center; }
     .scan-box { position: relative; width: 220px; height: 220px; margin: 10px auto; border-radius: 50%; overflow: hidden; border: 3px solid #111827; background: #000; }
     .scan-box img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
-    .heatmap-layer { position: absolute; inset: 0; border-radius: 50%; mix-blend-mode: color-dodge; opacity: 0.95; }
+    .heatmap-layer { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; opacity: 0.9; }
     .scan-caption { font-family: 'Space Grotesk', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #475569; }
     .diag-box { background: #fff7ed; border-left: 5px solid #FF5A1F; border: 1px solid #fed7aa; border-left-width: 5px; padding: 18px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
     .diag-grade { font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 4px; }
@@ -152,8 +152,8 @@ export const Reports: React.FC = () => {
         <div class="scan-box">
           <img src="${origin}/real_retina.png" alt="Grad-CAM Retina" />
           <div class="heatmap-layer">
-            <div style="position: absolute; top: 32%; left: 28%; width: 110px; height: 110px; border-radius: 50%; filter: blur(8px); background: radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%);"></div>
-            <div style="position: absolute; bottom: 26%; left: 36%; width: 80px; height: 80px; border-radius: 50%; filter: blur(6px); background: radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%);"></div>
+            <div style="position: absolute; top: 28%; left: 26%; width: 120px; height: 120px; border-radius: 50%; filter: blur(8px); background: radial-gradient(circle, rgba(255,0,0,0.95) 0%, rgba(255,100,0,0.85) 35%, rgba(255,210,0,0.65) 60%, rgba(0,220,255,0.3) 80%, transparent 100%);"></div>
+            <div style="position: absolute; bottom: 24%; left: 34%; width: 95px; height: 95px; border-radius: 50%; filter: blur(6px); background: radial-gradient(circle, rgba(255,0,85,0.95) 0%, rgba(255,140,0,0.8) 40%, rgba(255,230,0,0.6) 65%, transparent 85%);"></div>
           </div>
         </div>
       </div>
@@ -355,14 +355,14 @@ export const Reports: React.FC = () => {
                 <div className="relative aspect-square max-w-[280px] mx-auto rounded-full overflow-hidden border-2 border-accent-orange bg-black print:border-black">
                   <img src="/real_retina.png" alt="Grad-CAM Heatmap" className="w-full h-full object-cover rounded-full scale-[1.05]" />
                   {/* Grad-CAM Blended Heatmap */}
-                  <div className="absolute inset-0 rounded-full mix-blend-color-dodge pointer-events-none opacity-90">
+                  <div className="absolute inset-0 rounded-full pointer-events-none opacity-90">
                     <div 
-                      className="absolute top-[32%] left-[28%] w-28 h-28 rounded-full blur-md"
-                      style={{ background: 'radial-gradient(circle, #FF1E00 0%, #FF7A00 50%, transparent 70%)' }}
+                      className="absolute top-[28%] left-[26%] w-32 h-32 rounded-full blur-md"
+                      style={{ background: 'radial-gradient(circle, rgba(255, 0, 0, 0.95) 0%, rgba(255, 100, 0, 0.85) 35%, rgba(255, 210, 0, 0.65) 60%, rgba(0, 220, 255, 0.3) 80%, transparent 100%)' }}
                     />
                     <div 
-                      className="absolute bottom-[26%] left-[36%] w-20 h-20 rounded-full blur-sm"
-                      style={{ background: 'radial-gradient(circle, #FF0055 0%, #FF7A00 50%, transparent 70%)' }}
+                      className="absolute bottom-[24%] left-[34%] w-24 h-24 rounded-full blur-md"
+                      style={{ background: 'radial-gradient(circle, rgba(255, 0, 85, 0.95) 0%, rgba(255, 140, 0, 0.8) 40%, rgba(255, 230, 0, 0.6) 65%, transparent 85%)' }}
                     />
                   </div>
                 </div>

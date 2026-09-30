@@ -31,15 +31,24 @@ export const RetinalVisualization: React.FC = () => {
 
           {/* Grad-CAM Heatmap In-Process Overlay */}
           {activeLayer === 'heatmap' && (
-            <div className="absolute inset-0 rounded-full pointer-events-none mix-blend-color-dodge transition-opacity duration-300">
+            <div className="absolute inset-0 rounded-full pointer-events-none transition-opacity duration-300">
               {/* Primary Lesion Attention Heat Map (Macula & Temporal Arcade) */}
-              <div className="absolute top-[38%] left-[28%] w-40 h-40 rounded-full bg-radial from-[#FF1E00] via-[#FF7A00]/90 to-transparent blur-md opacity-95 animate-pulse" />
+              <div 
+                className="absolute top-[38%] left-[28%] w-40 h-40 rounded-full blur-md opacity-95 animate-pulse" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 30, 0, 0.95) 0%, rgba(255, 122, 0, 0.8) 40%, rgba(255, 210, 0, 0.5) 65%, transparent 80%)' }}
+              />
               
               {/* Secondary Attention Peak (Optic Disc Vascular Root) */}
-              <div className="absolute top-[32%] right-[18%] w-28 h-28 rounded-full bg-radial from-[#FFCC00] via-[#FF5A1F]/80 to-transparent blur-md opacity-85" />
+              <div 
+                className="absolute top-[32%] right-[18%] w-28 h-28 rounded-full blur-md opacity-85" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 204, 0, 0.9) 0%, rgba(255, 90, 31, 0.75) 50%, transparent 75%)' }}
+              />
               
               {/* Microaneurysm & Exudate Attention Clusters (Inferior Arcades) */}
-              <div className="absolute bottom-[24%] left-[34%] w-28 h-28 rounded-full bg-radial from-[#FF0055] via-[#FF7A00]/70 to-transparent blur-sm opacity-90" />
+              <div 
+                className="absolute bottom-[24%] left-[34%] w-28 h-28 rounded-full blur-sm opacity-90" 
+                style={{ background: 'radial-gradient(circle, rgba(255, 0, 85, 0.95) 0%, rgba(255, 122, 0, 0.75) 50%, transparent 75%)' }}
+              />
             </div>
           )}
 
