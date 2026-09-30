@@ -19,13 +19,7 @@ export const Hero: React.FC = () => {
           {/* Left Column Text Content */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-1 border border-accent-orange/40 shadow-brutal-dark">
-              <span className="w-2 h-2 rounded-full bg-accent-orange animate-ping" />
-              <span className="font-mono text-xs uppercase tracking-widest text-accent-gold font-bold">
-                Explainable AI • Ophthalmology
-              </span>
-            </div>
+
 
             {/* Main Title */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-sans tracking-tight text-text-primary uppercase leading-[0.95]">
