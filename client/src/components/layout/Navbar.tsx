@@ -49,17 +49,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
               <Eye className="w-5 h-5 text-accent-orange animate-pulse" />
               <div className="absolute top-0 right-0 w-2 h-2 bg-accent-bright" />
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1">
-                <span className="font-mono font-black text-lg text-text-primary tracking-wider uppercase">
-                  RETINA<span className="text-accent-orange">-X</span>
-                </span>
-                <span className="text-[10px] font-mono font-bold px-1 py-0.5 bg-accent-gold/10 text-accent-gold border border-accent-gold/30">
-                  XAI
-                </span>
-              </div>
-              <span className="text-[9px] font-mono uppercase tracking-widest text-text-muted">
-                SIH26038 • MathWorks
+            <div className="flex flex-col justify-center">
+              <span className="font-mono font-black text-lg text-text-primary tracking-wider uppercase">
+                RETINA<span className="text-accent-orange">-X</span>
               </span>
             </div>
           </a>
