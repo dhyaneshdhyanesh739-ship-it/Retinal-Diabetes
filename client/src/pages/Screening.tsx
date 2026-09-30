@@ -145,7 +145,7 @@ export const Screening: React.FC = () => {
               
               {/* Left Column: ImageViewer */}
               <div className="lg:col-span-7 space-y-4">
-                <ImageViewer imageSrc={selectedImage} />
+                <ImageViewer imageSrc={selectedImage} result={result} />
                 <div className="flex items-center justify-between font-mono text-xs">
                   <span className="text-text-muted">File: {imageName}</span>
                   <button onClick={handleReset} className="text-accent-orange hover:underline flex items-center gap-1">

@@ -24,6 +24,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
   heatmapOverlay = true,
   showVessels = true,
   showLesions = true,
+  result,
 }) => {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -86,8 +87,16 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
     { label: 'NEOVASCULARIZATION', type: 'PROLIFERATIVE', color: 'border-purple-500 bg-purple-500/30 text-purple-200' },
   ];
 
-  const l1Obj = lesionPool[seed % lesionPool.length];
-  const l2Obj = lesionPool[(seed + 3) % lesionPool.length];
+  // Align callouts with result if provided
+  const isProliferative = !result || result.prediction.class_id === 4 || result.prediction.grade_name.toLowerCase().includes('proliferative');
+  
+  const l1Obj = isProliferative
+    ? { label: 'HEMORRHAGE (89%)', type: 'HEMORRHAGE', color: 'border-accent-crimson bg-accent-crimson/30 text-white' }
+    : lesionPool[seed % lesionPool.length];
+
+  const l2Obj = isProliferative
+    ? { label: 'NEOVASCULARIZATION', type: 'PROLIFERATIVE', color: 'border-purple-500 bg-purple-500/30 text-purple-200' }
+    : lesionPool[(seed + 3) % lesionPool.length];
 
   const l1Top = `${20 + ((seed >> 2) % 40)}%`;
   const l1Left = `${22 + ((seed >> 3) % 40)}%`;
