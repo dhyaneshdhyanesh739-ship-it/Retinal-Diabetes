@@ -139,7 +139,7 @@ export const Reports: React.FC = () => {
       <div style="grid-column: span 2;"><span class="meta-label">TELE-SPECIALIST</span><span class="meta-val">${selectedPatient.doctor}</span></div>
     </div>
 
-    <div class="section-title">01 — RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP</div>
+    <div class="section-title">RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP</div>
     <div class="scan-grid">
       <div>
         <div class="scan-caption">Raw Retinal Fundus Scan</div>
@@ -159,7 +159,7 @@ export const Reports: React.FC = () => {
       </div>
     </div>
 
-    <div class="section-title">02 — AI CLASSIFICATION & CLINICAL TRIAGE</div>
+    <div class="section-title">AI CLASSIFICATION & CLINICAL TRIAGE</div>
     <div class="diag-box">
       <div>
         <span class="meta-label">PREDICTED SEVERITY GRADE</span>
@@ -175,7 +175,7 @@ export const Reports: React.FC = () => {
       REFERRAL DIRECTIVE: ${selectedPatient.urgency}
     </div>
 
-    <div class="section-title">03 — BIOMARKER & LESION EVIDENCE BREAKDOWN</div>
+    <div class="section-title">BIOMARKER & LESION EVIDENCE BREAKDOWN</div>
     <div class="lesion-table">
       <div class="lesion-card">
         <span class="meta-label">MICROANEURYSMS</span>
@@ -333,7 +333,7 @@ export const Reports: React.FC = () => {
           {/* Side-by-Side Retinal Scans & Grad-CAM Heatmap Image Section */}
           <div className="space-y-3 font-mono text-xs">
             <h3 className="font-bold text-accent-orange uppercase border-b border-surface-border pb-1 flex items-center gap-2 print:border-gray-300 print:text-black">
-              <Eye className="w-4 h-4 text-accent-orange no-print" /> 01 — RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP
+              <Eye className="w-4 h-4 text-accent-orange no-print" /> RETINAL FUNDUS SCAN & GRAD-CAM ATTENTION MAP
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 bg-surface-2 border border-surface-border print:bg-white print:border-gray-300">
@@ -373,7 +373,7 @@ export const Reports: React.FC = () => {
           {/* AI Screening Summary Box */}
           <div className="space-y-3 font-mono text-xs">
             <h3 className="font-bold text-accent-gold uppercase border-b border-surface-border pb-1 print:border-gray-300 print:text-black">
-              02 — AI CLASSIFICATION & CLINICAL TRIAGE
+              AI CLASSIFICATION & CLINICAL TRIAGE
             </h3>
             
             <div className="p-4 bg-surface-2 border-l-4 border-l-accent-orange flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 print:bg-gray-50 print:border-l-black print:border-gray-300">
@@ -395,7 +395,7 @@ export const Reports: React.FC = () => {
           {/* Explainability Breakdown & Biomarkers */}
           <div className="space-y-3 font-mono text-xs">
             <h3 className="font-bold text-accent-orange uppercase border-b border-surface-border pb-1 print:border-gray-300 print:text-black">
-              03 — BIOMARKER & LESION EVIDENCE BREAKDOWN
+              BIOMARKER & LESION EVIDENCE BREAKDOWN
             </h3>
 
             <div className="grid grid-cols-3 gap-3 p-3 bg-surface-2 border border-surface-border text-center print:bg-white print:border-gray-300">

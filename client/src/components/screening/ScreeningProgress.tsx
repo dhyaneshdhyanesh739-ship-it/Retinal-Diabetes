@@ -7,11 +7,11 @@ interface ScreeningProgressProps {
 
 export const ScreeningProgress: React.FC<ScreeningProgressProps> = ({ onComplete }) => {
   const steps = [
-    '01 Image Preprocessing & Contrast Normalization',
-    '02 Retinal Blood Vessel Segmentation (U-Net)',
-    '03 Microaneurysm & Exudate Feature Extraction',
-    '04 Grad-CAM Explainability Attention Map Generation',
-    '05 Risk Classification & Clinical Referral Scoring',
+    'Image Preprocessing & Contrast Normalization',
+    'Retinal Blood Vessel Segmentation (U-Net)',
+    'Microaneurysm & Exudate Feature Extraction',
+    'Grad-CAM Explainability Attention Map Generation',
+    'Risk Classification & Clinical Referral Scoring',
   ];
 
   const [currentStepIndex, setCurrentStepIndex] = useState(0);

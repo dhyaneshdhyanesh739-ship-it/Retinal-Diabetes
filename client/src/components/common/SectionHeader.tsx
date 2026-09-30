@@ -20,9 +20,6 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`mb-12 ${align === 'center' ? 'text-center' : 'text-left'}`}>
       <div className={`flex items-center gap-3 mb-2 ${align === 'center' ? 'justify-center' : 'justify-start'}`}>
-        <span className="font-mono text-xs font-bold text-accent-orange px-2 py-0.5 bg-accent-orange/10 border border-accent-orange/30">
-          {number}
-        </span>
         <span className="font-mono text-xs uppercase tracking-widest text-text-secondary">
           {eyebrow}
         </span>

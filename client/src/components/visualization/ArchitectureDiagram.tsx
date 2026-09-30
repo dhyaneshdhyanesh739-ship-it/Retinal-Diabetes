@@ -4,35 +4,35 @@ import { Layers, Cpu, Eye, FileText, Database, Shield, Server, ArrowDown } from 
 export const ArchitectureDiagram: React.FC = () => {
   const modules = [
     {
-      title: "01 — FRONTEND COMMAND CENTER",
+      title: "FRONTEND COMMAND CENTER",
       tech: "React 18 + TypeScript + Vite + Tailwind CSS",
       desc: "Royal Medical UI design system with Lenis smooth scroll, tactile skeuomorphic image controls, and zero scroll lag.",
       icon: <Layers className="w-5 h-5 text-accent-orange" />,
       tag: "UI / UX Layer"
     },
     {
-      title: "02 — IMAGE PREPROCESSING & QUALITY CHECK",
+      title: "IMAGE PREPROCESSING & QUALITY CHECK",
       tech: "OpenCV + Local Image Quality Filter",
       desc: "Instant automated validation of illumination, contrast, pupil dilation, and blur prior to neural inference.",
       icon: <Eye className="w-5 h-5 text-accent-gold" />,
       tag: "Preprocessing"
     },
     {
-      title: "03 — DEEP LEARNING SCREENING CORE",
+      title: "DEEP LEARNING SCREENING CORE",
       tech: "PyTorch / TensorFlow ResNet-50 & ConvNeXt",
       desc: "Multi-class classification trained on rural retinal fundus datasets for early detection of microaneurysms.",
       icon: <Cpu className="w-5 h-5 text-accent-bright" />,
       tag: "Neural Core"
     },
     {
-      title: "04 — EXPLAINABLE AI (XAI) PIPELINE",
+      title: "EXPLAINABLE AI (XAI) PIPELINE",
       tech: "Grad-CAM + Layer-CAM Attention Map Engine",
       desc: "Generates high-resolution heatmaps and bounding boxes around micro-lesions for full clinical auditability.",
       icon: <Shield className="w-5 h-5 text-accent-crimson" />,
       tag: "Explainability"
     },
     {
-      title: "05 — RISK STRATIFICATION & BACKEND API",
+      title: "RISK STRATIFICATION & BACKEND API",
       tech: "Node.js Express + Mongoose Schema",
       desc: "RESTful microservices handling patient records, triage queues, telemetry, and clinical exportable PDFs.",
       icon: <Server className="w-5 h-5 text-status-success" />,
