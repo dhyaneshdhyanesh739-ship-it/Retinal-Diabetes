@@ -1,4 +1,4 @@
-import { DRCategory } from './screening';
+import type { DRCategory } from './screening';
 
 export interface PatientScreeningRecord {
   id: string;

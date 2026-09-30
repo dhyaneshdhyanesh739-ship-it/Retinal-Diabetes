@@ -1,5 +1,5 @@
 import React from 'react';
-import { DRDistribution } from '../../types/dashboard';
+import type { DRDistribution } from '../../types/dashboard';
 
 interface AnalyticsChartProps {
   distribution: DRDistribution[];

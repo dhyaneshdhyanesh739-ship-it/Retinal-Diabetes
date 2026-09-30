@@ -5,8 +5,8 @@ import { ScreeningTable } from '../components/dashboard/ScreeningTable';
 import { ActivityTimeline } from '../components/dashboard/ActivityTimeline';
 import { AnalyticsChart } from '../components/dashboard/AnalyticsChart';
 import { getDashboardStats, getAllPatients } from '../services/screeningService';
-import { DashboardStats } from '../types/dashboard';
-import { PatientProfile } from '../types/patient';
+import type { DashboardStats } from '../types/dashboard';
+import type { PatientProfile } from '../types/patient';
 import { Eye, ShieldAlert, Clock, Users, Activity, CheckCircle2 } from 'lucide-react';
 
 export const Dashboard: React.FC = () => {
