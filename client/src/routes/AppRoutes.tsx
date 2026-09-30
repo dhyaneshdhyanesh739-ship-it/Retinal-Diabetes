@@ -9,6 +9,7 @@ import { PatientDetails } from '../pages/PatientDetails';
 import { Reports } from '../pages/Reports';
 import { Architecture } from '../pages/Architecture';
 import { About } from '../pages/About';
+import { RuralAccess } from '../pages/RuralAccess';
 import { NotFound } from '../pages/NotFound';
 
 const PatientDetailsWrapper = () => {
@@ -27,6 +28,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/patients/:id" element={<PatientDetailsWrapper />} />
       <Route path="/reports" element={<Reports />} />
       <Route path="/architecture" element={<Architecture />} />
+      <Route path="/rural-access" element={<RuralAccess />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

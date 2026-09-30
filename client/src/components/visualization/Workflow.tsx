@@ -60,11 +60,9 @@ export const Workflow: React.FC = () => {
           key={step.num}
           className="brutal-card p-6 relative group hover:-translate-y-1 transition-all duration-200"
         >
-          {/* Top Step Number Header */}
+          {/* Top Bullet Icon Header */}
           <div className="flex items-center justify-between mb-4">
-            <span className="font-mono text-2xl font-black text-accent-orange">
-              {step.num}
-            </span>
+            <span className="font-mono text-2xl font-bold text-accent-orange">•</span>
             <div className="p-2 bg-surface-2 border border-surface-border">
               {step.icon}
             </div>

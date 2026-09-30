@@ -1,7 +1,6 @@
 import React from 'react';
 import { PublicLayout } from '../layouts/PublicLayout';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { RuralSimulation } from '../components/visualization/RuralSimulation';
 import { Badge } from '../components/common/Badge';
 import { Award, Eye, Heart, ShieldCheck, Target, Users } from 'lucide-react';
 
@@ -13,16 +12,16 @@ export const About: React.FC = () => {
           
           <SectionHeader
             number="10"
-            eyebrow="Healthcare Innovation Challenge"
-            title="MISSION & PROBLEM STATEMENT"
-            description="Explainable AI for Diabetic Retinopathy Screening in Rural India (MathWorks Theme)."
+            eyebrow="Healthcare Innovation"
+            title="MISSION & VISION"
+            description="Explainable AI for Diabetic Retinopathy Screening in Rural India."
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6 font-sans text-text-secondary leading-relaxed">
               <div className="p-6 bg-surface-1 border border-accent-gold/40">
                 <span className="font-mono text-xs uppercase font-bold text-accent-gold block mb-1">
-                  THE HEALTHCARE CHALLENGE
+                  THE CLINICAL CHALLENGE
                 </span>
                 <h3 className="text-xl font-bold text-text-primary uppercase mb-2 font-mono">
                   Why Explainable AI Matters in Rural Ophthalmology
@@ -39,9 +38,9 @@ export const About: React.FC = () => {
 
             <div className="lg:col-span-5 space-y-4 font-mono text-xs">
               <div className="brutal-card p-6 border-l-4 border-l-accent-orange">
-                <div className="text-accent-orange font-bold uppercase mb-1">AI PLATFORM SCOPE</div>
-                <div className="text-lg font-black text-text-primary">Rural Retinal Screening</div>
-                <div className="text-text-muted mt-1">Theme: Healthcare & MedTech • Organization: MathWorks</div>
+                <div className="text-accent-orange font-bold uppercase mb-1">PLATFORM CATEGORY</div>
+                <div className="text-lg font-black text-text-primary">RETINA-X AI</div>
+                <div className="text-text-muted mt-1">Theme: Healthcare & MedTech</div>
               </div>
 
               <div className="brutal-card p-6 border-l-4 border-l-accent-gold">
@@ -50,11 +49,6 @@ export const About: React.FC = () => {
                 <div className="text-text-muted mt-1">Directly visualizes microaneurysms and exudate clusters for doctor verification.</div>
               </div>
             </div>
-          </div>
-
-          {/* Member 4: MATLAB / Simulink Rural Simulation Section */}
-          <div className="pt-8 border-t border-surface-border space-y-6">
-            <RuralSimulation />
           </div>
 
         </div>

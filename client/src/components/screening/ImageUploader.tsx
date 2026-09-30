@@ -19,17 +19,17 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     {
       name: 'retina_moderate_dr_sample.jpg',
       label: 'Sample 1: Moderate DR (Lesions)',
-      src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+      src: '/real_retina.png',
     },
     {
       name: 'retina_severe_dr_sample.jpg',
       label: 'Sample 2: Severe DR (Exudates)',
-      src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+      src: '/real_retina.png',
     },
     {
       name: 'retina_normal_sample.jpg',
       label: 'Sample 3: Normal Retina',
-      src: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+      src: '/real_retina.png',
     },
   ];
 
@@ -117,7 +117,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
       <div className="p-4 bg-surface-1 border border-surface-border">
         <div className="flex items-center justify-between mb-3">
           <span className="font-mono text-xs uppercase font-bold text-accent-gold flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" /> Quick Screening Presets (XAI Demo)
+            <Sparkles className="w-3.5 h-3.5" /> Quick Screening Presets
           </span>
           <span className="text-[10px] font-mono text-text-muted">Click to Load</span>
         </div>

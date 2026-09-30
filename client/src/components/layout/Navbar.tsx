@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
     { label: 'Explainability', href: '/explainability' },
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'Technology', href: '/architecture' },
-    { label: 'Rural Access', href: '/#rural-access' },
+    { label: 'Rural Access', href: '/rural-access' },
     { label: 'About', href: '/about' },
   ];
 
@@ -45,21 +45,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activePath = '/' }) => {
           
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 bg-surface-1 border border-accent-orange flex items-center justify-center shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform">
-              <Eye className="w-5 h-5 text-accent-orange animate-pulse" />
-              <div className="absolute top-0 right-0 w-2 h-2 bg-accent-bright" />
+            <div className="relative w-11 h-11 bg-white border border-accent-orange flex items-center justify-center shadow-brutal rounded overflow-hidden group-hover:scale-105 transition-transform flex-shrink-0">
+              <img 
+                src="/logo.png" 
+                alt="Retina-X Logo" 
+                className="w-full h-full object-contain p-0.5" 
+              />
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1">
-                <span className="font-mono font-black text-lg text-text-primary tracking-wider uppercase">
-                  RETINA<span className="text-accent-orange">-X</span>
-                </span>
-                <span className="text-[10px] font-mono font-bold px-1 py-0.5 bg-accent-gold/10 text-accent-gold border border-accent-gold/30">
-                  XAI
-                </span>
-              </div>
-              <span className="text-[9px] font-mono uppercase tracking-widest text-text-muted">
-                Ophthalmology • MathWorks
+            <div className="flex flex-col justify-center">
+              <span className="font-mono font-black text-lg text-text-primary tracking-wider uppercase">
+                RETINA<span className="text-accent-orange">-X</span>
               </span>
             </div>
           </a>

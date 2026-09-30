@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
             </p>
           </div>
           <span className="text-[10px] font-mono uppercase tracking-widest text-accent-orange px-2 py-1 bg-accent-orange/10 border border-accent-orange/30 whitespace-nowrap">
-            XAI Protocol Compliant
+            Clinical XAI Compliant
           </span>
         </div>
 
@@ -26,21 +26,25 @@ export const Footer: React.FC = () => {
           
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-surface-2 border border-accent-orange flex items-center justify-center">
-                <Eye className="w-4 h-4 text-accent-orange" />
+            <a href="/" className="flex items-center gap-3 group">
+              <div className="w-11 h-11 bg-white border border-accent-orange flex items-center justify-center shadow-brutal rounded overflow-hidden flex-shrink-0">
+                <img 
+                  src="/logo.png" 
+                  alt="Retina-X Logo" 
+                  className="w-full h-full object-contain p-0.5" 
+                />
               </div>
               <span className="font-mono font-black text-xl text-text-primary uppercase tracking-wider">
                 RETINA<span className="text-accent-orange">-X</span>
               </span>
-            </div>
+            </a>
             <p className="text-xs text-text-secondary leading-relaxed font-sans">
-              Royal Medical AI Command Center for Explainable Diabetic Retinopathy Screening in Rural India. Built for MathWorks AI Challenge.
+              Royal Medical AI Command Center for Explainable Diabetic Retinopathy Screening in Rural India.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs font-mono text-text-muted">
-              <span>Theme: MathWorks</span>
-              <span>•</span>
               <span>Explainable AI</span>
+              <span>•</span>
+              <span>Ophthalmology</span>
             </div>
           </div>
 
@@ -124,7 +128,7 @@ export const Footer: React.FC = () => {
               Designed to empower Accredited Social Health Activists (ASHA) and rural health workers in non-networked clinics across tier-3 and village centers.
             </p>
             <div className="p-3 bg-surface-1 border border-surface-border text-[11px] font-mono text-text-muted">
-              <span className="text-accent-gold font-bold">Platform Category:</span> Explainable Healthcare AI<br />
+              <span className="text-accent-gold font-bold">Domain Focus:</span> Explainable Ophthalmology<br />
               <span className="text-text-secondary">Theme: Healthcare & Explainable AI</span>
             </div>
           </div>

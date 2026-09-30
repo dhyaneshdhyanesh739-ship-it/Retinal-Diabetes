@@ -37,7 +37,7 @@ export const Explainability: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
               <div className="brutal-card p-6 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-accent-orange">01 — Grad-CAM</span>
+                  <span className="font-bold text-accent-orange">• Grad-CAM</span>
                   <span className="text-[10px] text-text-muted">Feature Localization</span>
                 </div>
                 <h4 className="text-sm font-bold text-text-primary uppercase">Gradient Visualizer</h4>
@@ -48,7 +48,7 @@ export const Explainability: React.FC = () => {
 
               <div className="brutal-card p-6 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-accent-bright">02 — Layer-CAM</span>
+                  <span className="font-bold text-accent-bright">• Layer-CAM</span>
                   <span className="text-[10px] text-text-muted">Multi-Scale Resolution</span>
                 </div>
                 <h4 className="text-sm font-bold text-text-primary uppercase">Fine-Grained Exudate Maps</h4>
@@ -59,7 +59,7 @@ export const Explainability: React.FC = () => {
 
               <div className="brutal-card p-6 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-status-success">03 — U-Net Segmentation</span>
+                  <span className="font-bold text-status-success">• U-Net Segmentation</span>
                   <span className="text-[10px] text-text-muted">Vascular Tortuosity</span>
                 </div>
                 <h4 className="text-sm font-bold text-text-primary uppercase">Vessel Arcades Mask</h4>
