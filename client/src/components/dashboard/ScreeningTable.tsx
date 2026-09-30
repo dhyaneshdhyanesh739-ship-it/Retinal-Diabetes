@@ -2,7 +2,7 @@ import React from 'react';
 import { Eye, ChevronRight, AlertCircle, CheckCircle } from 'lucide-react';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
-import { PatientProfile } from '../../types/patient';
+import type { PatientProfile } from '../../types/patient';
 
 interface ScreeningTableProps {
   patients: PatientProfile[];

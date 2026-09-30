@@ -1,6 +1,7 @@
 import React from 'react';
 import { PublicLayout } from '../layouts/PublicLayout';
 import { SectionHeader } from '../components/common/SectionHeader';
+import { RuralSimulation } from '../components/visualization/RuralSimulation';
 import { Badge } from '../components/common/Badge';
 import { Award, Eye, Heart, ShieldCheck, Target, Users } from 'lucide-react';
 
@@ -49,6 +50,11 @@ export const About: React.FC = () => {
                 <div className="text-text-muted mt-1">Directly visualizes microaneurysms and exudate clusters for doctor verification.</div>
               </div>
             </div>
+          </div>
+
+          {/* Member 4: MATLAB / Simulink Rural Simulation Section */}
+          <div className="pt-8 border-t border-surface-border space-y-6">
+            <RuralSimulation />
           </div>
 
         </div>

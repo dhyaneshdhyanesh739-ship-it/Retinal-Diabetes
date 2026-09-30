@@ -186,7 +186,7 @@ app.get('/api/health', (req, res) => {
     version: '2.4.0-SIH26038',
     theme: 'MathWorks Explainable AI Theme',
     backend: 'Node.js Express + Mongoose API',
-    aiModel: 'ResNet50 + Grad-CAM Explainability Pipeline',
+    aiModel: 'EfficientNet-B4 / ResNet50 + Grad-CAM Explainability Pipeline',
     timestamp: new Date().toISOString()
   });
 });
@@ -225,48 +225,172 @@ app.get('/api/patients/:id', (req, res) => {
   res.json(patient);
 });
 
-// AI Screening & XAI Inference Simulator Endpoint
-app.post('/api/screening/analyze', (req, res) => {
-  const { imageName, eyeSide } = req.body;
+// Primary Team Member 4 Contract Endpoint: POST /api/v1/predict/full-screening
+app.post('/api/v1/predict/full-screening', (req, res) => {
+  const { imageName, eyeSide, demoState } = req.body;
 
-  const categories = [
-    { category: "No Apparent DR", confidence: 96.2, riskLevel: "LOW", color: "#35C759" },
-    { category: "Mild Non-Proliferative DR", confidence: 88.5, riskLevel: "MODERATE", color: "#FFB020" },
-    { category: "Moderate Non-Proliferative DR", confidence: 91.8, riskLevel: "HIGH", color: "#FF7A00" },
-    { category: "Severe DR", confidence: 94.1, riskLevel: "CRITICAL", color: "#FF3B30" }
+  // Handle explicit demo states for Member 4 presentation workflow
+  if (demoState === 'IMAGE_RECAPTURE_REQUIRED' || (imageName && imageName.includes('poor'))) {
+    return res.json({
+      case_id: `DR-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+      quality: {
+        score: 41.2,
+        status: "POOR",
+        recapture_message: "IMAGE RECAPTURE REQUIRED: Low contrast, pupil shadows, or lens blur detected. Clean lens and re-align non-mydriatic fundus camera before screening."
+      },
+      prediction: {
+        class_id: -1,
+        grade_name: "Unassessable Image",
+        short_code: "POOR_QUALITY"
+      },
+      probabilities: [
+        { class_id: 0, name: "No Apparent DR", prob: 0.20 },
+        { class_id: 1, name: "Mild DR", prob: 0.20 },
+        { class_id: 2, name: "Moderate DR", prob: 0.20 },
+        { class_id: 3, name: "Severe DR", prob: 0.20 },
+        { class_id: 4, name: "Proliferative DR", prob: 0.20 }
+      ],
+      calibrated_confidence: 41.2,
+      gradcam: {
+        attention_quadrant: "Indeterminate",
+        heatmap_overlay_url: null,
+        intensity_score: 0.0
+      },
+      lesion_evidence: [],
+      reliability: {
+        status: "IMAGE_RECAPTURE_REQUIRED",
+        badge_color: "RED",
+        uncertainty_margin: 28.5,
+        explanation: "Fundus image quality failed automated quality gate. Recapture required."
+      },
+      triage: {
+        screening_recommendation: "Recapture image with proper illumination and alignment.",
+        referral_urgency: "RECAPTURE"
+      },
+      report_data: {
+        timestamp: new Date().toISOString(),
+        disclaimer: "AI screening result for decision support. Does not replace clinical diagnosis."
+      }
+    });
+  }
+
+  if (demoState === 'HUMAN_REVIEW_RECOMMENDED' || (imageName && imageName.includes('borderline'))) {
+    return res.json({
+      case_id: `DR-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+      quality: {
+        score: 82.5,
+        status: "GOOD",
+        recapture_message: null
+      },
+      prediction: {
+        class_id: 1,
+        grade_name: "Mild Non-Proliferative DR (Borderline)",
+        short_code: "Mild DR"
+      },
+      probabilities: [
+        { class_id: 0, name: "No Apparent DR", prob: 0.38 },
+        { class_id: 1, name: "Mild DR", prob: 0.44 },
+        { class_id: 2, name: "Moderate DR", prob: 0.14 },
+        { class_id: 3, name: "Severe DR", prob: 0.03 },
+        { class_id: 4, name: "Proliferative DR", prob: 0.01 }
+      ],
+      calibrated_confidence: 68.4,
+      gradcam: {
+        attention_quadrant: "Macular Periphery & Superior Arcade",
+        heatmap_overlay_url: "/sample_heatmap.jpg",
+        intensity_score: 0.62
+      },
+      lesion_evidence: [
+        { type: "Microaneurysms", count: 3, severity: "Mild", confidence: 68.4 }
+      ],
+      reliability: {
+        status: "HUMAN_REVIEW_RECOMMENDED",
+        badge_color: "AMBER",
+        uncertainty_margin: 14.8,
+        explanation: "Class probabilities are close between No DR (38%) and Mild DR (44%). Clinician review recommended."
+      },
+      triage: {
+        screening_recommendation: "Human review recommended by Tele-Ophthalmologist.",
+        referral_urgency: "HUMAN_REVIEW"
+      },
+      report_data: {
+        timestamp: new Date().toISOString(),
+        disclaimer: "AI screening result for decision support. Does not replace clinical diagnosis."
+      }
+    });
+  }
+
+  // Default: RELIABLE_SCREENING (Moderate / Severe DR or Normal)
+  const isSevere = imageName && imageName.includes("severe");
+  const isNormal = imageName && imageName.includes("normal");
+
+  const classId = isNormal ? 0 : (isSevere ? 3 : 2);
+  const gradeName = isNormal ? "No Apparent DR" : (isSevere ? "Severe Non-Proliferative DR" : "Moderate Non-Proliferative DR");
+  const confidence = isNormal ? 96.8 : (isSevere ? 94.5 : 89.4);
+
+  const probs = isNormal ? [
+    { class_id: 0, name: "No Apparent DR", prob: 0.96 },
+    { class_id: 1, name: "Mild DR", prob: 0.03 },
+    { class_id: 2, name: "Moderate DR", prob: 0.01 },
+    { class_id: 3, name: "Severe DR", prob: 0.00 },
+    { class_id: 4, name: "Proliferative DR", prob: 0.00 }
+  ] : [
+    { class_id: 0, name: "No Apparent DR", prob: 0.03 },
+    { class_id: 1, name: "Mild DR", prob: 0.09 },
+    { class_id: 2, name: "Moderate DR", prob: 0.78 },
+    { class_id: 3, name: "Severe DR", prob: 0.07 },
+    { class_id: 4, name: "Proliferative DR", prob: 0.03 }
   ];
-
-  let result = categories[2];
-  if (imageName && imageName.includes("normal")) result = categories[0];
-  if (imageName && imageName.includes("severe")) result = categories[3];
 
   setTimeout(() => {
     res.json({
-      screeningId: `SCR-${Math.floor(1000 + Math.random() * 9000)}`,
-      timestamp: new Date().toISOString(),
-      imageQualityScore: 94.6,
-      imageQualityStatus: "OPTIMAL",
-      eyeSide: eyeSide || "Right Eye (OD)",
-      aiResult: {
-        category: result.category,
-        confidence: result.confidence,
-        riskLevel: result.riskLevel,
-        referralRecommended: result.riskLevel !== "LOW",
+      case_id: `DR-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+      quality: {
+        score: 94.6,
+        status: "GOOD",
+        recapture_message: null
       },
-      explainableAI: {
-        gradCAMAttentionRegion: "Inferior Temporal Vascular Quadrant & Macular Margin",
-        attentionIntensityScore: 0.87,
-        detectedLesions: [
-          { type: "Microaneurysms", count: 9, severity: "Mild", confidence: 92.4, coordinates: { x: 42, y: 58 } },
-          { type: "Hard Exudates", count: 5, severity: "Moderate", confidence: 89.1, coordinates: { x: 61, y: 34 } },
-          { type: "Venous Beading", count: 2, severity: "Localized", confidence: 84.7, coordinates: { x: 38, y: 72 } }
-        ],
-        vesselDensityIndex: "78.4% (Mild vessel tortuosity detected)",
-        xaiSummary: "Model focused heavily on microaneurysm clusters and localized exudates in the inferior temporal retina. The Grad-CAM heatmap highlights key pathological regions with 87% attention density.",
+      prediction: {
+        class_id: classId,
+        grade_name: gradeName,
+        short_code: gradeName
       },
-      clinicalDisclaimer: "AI-assisted screening is intended to support healthcare professionals and does not replace clinical diagnosis. Results should be reviewed by a qualified ophthalmologist."
+      probabilities: probs,
+      calibrated_confidence: confidence,
+      gradcam: {
+        attention_quadrant: "Inferior Temporal Vascular Quadrant & Macular Margin",
+        heatmap_overlay_url: "/sample_heatmap.jpg",
+        intensity_score: 0.87
+      },
+      lesion_evidence: isNormal ? [] : [
+        { type: "Microaneurysms", count: 9, severity: "Mild", confidence: 92.4 },
+        { type: "Hard Exudates", count: 5, severity: "Moderate", confidence: 89.1 },
+        { type: "Intraretinal Hemorrhages", count: 2, severity: "Localized", confidence: 84.7 }
+      ],
+      reliability: {
+        status: "RELIABLE_SCREENING",
+        badge_color: "GREEN",
+        uncertainty_margin: 3.8,
+        explanation: "High contrast foveal reflex. High model calibration confidence."
+      },
+      triage: {
+        screening_recommendation: isNormal
+          ? "Routine annual DR screening in 12 months."
+          : "Clinical referral recommended within 4 weeks at District Eye Hospital.",
+        referral_urgency: isNormal ? "NO_REFERRAL" : "ROUTINE_REFERRAL"
+      },
+      report_data: {
+        timestamp: new Date().toISOString(),
+        disclaimer: "AI screening result for clinical decision support. Does not constitute a confirmed diagnosis."
+      }
     });
   }, 1000);
+});
+
+// Fallback legacy alias endpoint
+app.post('/api/screening/analyze', (req, res) => {
+  req.url = '/api/v1/predict/full-screening';
+  app.handle(req, res);
 });
 
 app.listen(PORT, () => {

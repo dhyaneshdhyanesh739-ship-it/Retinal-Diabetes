@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DashboardLayout } from '../layouts/DashboardLayout';
 import { getAllPatients } from '../services/screeningService';
-import { PatientProfile } from '../types/patient';
+import type { PatientProfile } from '../types/patient';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { Search, ChevronRight, UserPlus, Filter } from 'lucide-react';

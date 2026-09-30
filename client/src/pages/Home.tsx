@@ -6,8 +6,8 @@ import { Workflow } from '../components/visualization/Workflow';
 import { ArchitectureDiagram } from '../components/visualization/ArchitectureDiagram';
 import { HeatmapViewer } from '../components/explainability/HeatmapViewer';
 import { ExplanationPanel } from '../components/explainability/ExplanationPanel';
-import { Button } from '../common/Button';
-import { Badge } from '../common/Badge';
+import { Button } from '../components/common/Button';
+import { Badge } from '../components/common/Badge';
 import { ArrowRight, ShieldCheck, Cpu, Eye, Activity, Award, Heart, CheckCircle, Smartphone, AlertTriangle } from 'lucide-react';
 
 export const Home: React.FC = () => {

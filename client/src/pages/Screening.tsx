@@ -5,16 +5,17 @@ import { ImageViewer } from '../components/screening/ImageViewer';
 import { ScreeningProgress } from '../components/screening/ScreeningProgress';
 import { ScreeningResult } from '../components/screening/ScreeningResult';
 import { analyzeRetinalImage } from '../services/screeningService';
-import { ScreeningResultData } from '../types/screening';
+import type { FullScreeningResponse, ReliabilityStatus } from '../types/screening';
 import { Button } from '../components/common/Button';
-import { Eye, Cpu, RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { Eye, Cpu, RefreshCw, AlertTriangle, ShieldCheck, CheckCircle2, HelpCircle, AlertCircle } from 'lucide-react';
 
 export const Screening: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>('');
   const [eyeSide, setEyeSide] = useState<string>('Right Eye (OD)');
+  const [demoState, setDemoState] = useState<ReliabilityStatus>('RELIABLE_SCREENING');
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
-  const [result, setResult] = useState<ScreeningResultData | null>(null);
+  const [result, setResult] = useState<FullScreeningResponse | null>(null);
 
   const handleImageSelected = (src: string, name: string) => {
     setSelectedImage(src);
@@ -30,7 +31,7 @@ export const Screening: React.FC = () => {
 
   const handleProgressComplete = async () => {
     try {
-      const apiResult = await analyzeRetinalImage(imageName, eyeSide);
+      const apiResult = await analyzeRetinalImage(imageName, eyeSide, demoState);
       setResult(apiResult);
     } catch {
       console.warn('Using client screening fallback');
@@ -56,36 +57,79 @@ export const Screening: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-2 font-mono text-xs text-accent-gold">
                 <span className="w-2 h-2 rounded-full bg-accent-orange animate-ping" />
-                RETINAL AI WORKSTATION • SIH26038
+                SIH26038 • MEMBER 4 SCREENING WORKFLOW & RURAL SIMULATION
               </div>
               <h1 className="text-3xl md:text-5xl font-black font-sans uppercase text-text-primary tracking-tight">
                 AI Retinal Screening Console
               </h1>
             </div>
 
-            {/* Eye Selector Controls */}
-            <div className="flex items-center gap-2 bg-surface-1 p-1 border border-surface-border font-mono text-xs">
-              <span className="text-text-muted px-2">Eye Position:</span>
-              <button
-                onClick={() => setEyeSide('Right Eye (OD)')}
-                className={`px-3 py-1.5 font-bold uppercase transition-colors ${
-                  eyeSide === 'Right Eye (OD)'
-                    ? 'bg-accent-orange text-bg-darkest'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
-              >
-                OD (Right)
-              </button>
-              <button
-                onClick={() => setEyeSide('Left Eye (OS)')}
-                className={`px-3 py-1.5 font-bold uppercase transition-colors ${
-                  eyeSide === 'Left Eye (OS)'
-                    ? 'bg-accent-orange text-bg-darkest'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
-              >
-                OS (Left)
-              </button>
+            {/* Eye Selector & Demo Reliability State Selector */}
+            <div className="flex flex-wrap items-center gap-3">
+              
+              {/* Eye Position Toggle */}
+              <div className="flex items-center gap-1 bg-surface-1 p-1 border border-surface-border font-mono text-xs">
+                <span className="text-text-muted px-2">Eye:</span>
+                <button
+                  onClick={() => setEyeSide('Right Eye (OD)')}
+                  className={`px-3 py-1 font-bold uppercase transition-colors ${
+                    eyeSide === 'Right Eye (OD)'
+                      ? 'bg-accent-orange text-bg-darkest'
+                      : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                >
+                  OD (Right)
+                </button>
+                <button
+                  onClick={() => setEyeSide('Left Eye (OS)')}
+                  className={`px-3 py-1 font-bold uppercase transition-colors ${
+                    eyeSide === 'Left Eye (OS)'
+                      ? 'bg-accent-orange text-bg-darkest'
+                      : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                >
+                  OS (Left)
+                </button>
+              </div>
+
+              {/* Member 4 State Simulator Toggle */}
+              <div className="flex items-center gap-1 bg-surface-1 p-1 border border-accent-gold/40 font-mono text-xs">
+                <span className="text-accent-gold px-2 font-bold">State:</span>
+                <button
+                  onClick={() => setDemoState('RELIABLE_SCREENING')}
+                  className={`px-2.5 py-1 text-[11px] font-bold uppercase transition-all border ${
+                    demoState === 'RELIABLE_SCREENING'
+                      ? 'bg-status-success text-bg-darkest border-status-success'
+                      : 'bg-surface-2 text-text-secondary border-surface-border'
+                  }`}
+                  title="Reliable High Confidence Result"
+                >
+                  Reliable
+                </button>
+                <button
+                  onClick={() => setDemoState('HUMAN_REVIEW_RECOMMENDED')}
+                  className={`px-2.5 py-1 text-[11px] font-bold uppercase transition-all border ${
+                    demoState === 'HUMAN_REVIEW_RECOMMENDED'
+                      ? 'bg-status-warning text-bg-darkest border-status-warning'
+                      : 'bg-surface-2 text-text-secondary border-surface-border'
+                  }`}
+                  title="Borderline High Uncertainty - Human Review"
+                >
+                  Human Review
+                </button>
+                <button
+                  onClick={() => setDemoState('IMAGE_RECAPTURE_REQUIRED')}
+                  className={`px-2.5 py-1 text-[11px] font-bold uppercase transition-all border ${
+                    demoState === 'IMAGE_RECAPTURE_REQUIRED'
+                      ? 'bg-status-danger text-white border-status-danger'
+                      : 'bg-surface-2 text-text-secondary border-surface-border'
+                  }`}
+                  title="Poor Image Quality - Recapture Required"
+                >
+                  Recapture
+                </button>
+              </div>
+
             </div>
           </div>
 
@@ -122,22 +166,18 @@ export const Screening: React.FC = () => {
                         Ready for AI Neural Inference
                       </h3>
                       <p className="text-xs text-text-secondary mt-1">
-                        ResNet-50 + Grad-CAM XAI Pipeline ready to analyze macula and vascular arcades.
+                        Calls POST /api/v1/predict/full-screening (EfficientNet-B4 + Grad-CAM XAI Pipeline).
                       </p>
                     </div>
 
                     <div className="space-y-3 font-mono text-xs text-text-secondary">
                       <div className="flex justify-between p-2 bg-surface-2 border border-surface-border">
-                        <span>Resolution Check:</span>
-                        <span className="text-text-primary font-bold">2048 x 1536 px</span>
+                        <span>Target API Endpoint:</span>
+                        <span className="text-accent-orange font-bold">/v1/predict/full-screening</span>
                       </div>
                       <div className="flex justify-between p-2 bg-surface-2 border border-surface-border">
-                        <span>Illumination Index:</span>
-                        <span className="text-status-success font-bold">Optimal (94.6%)</span>
-                      </div>
-                      <div className="flex justify-between p-2 bg-surface-2 border border-surface-border">
-                        <span>XAI Engine:</span>
-                        <span className="text-accent-gold font-bold">Grad-CAM Active</span>
+                        <span>Selected Test State:</span>
+                        <span className="text-accent-gold font-bold">{demoState}</span>
                       </div>
                     </div>
 

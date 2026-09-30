@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DashboardLayout } from '../layouts/DashboardLayout';
 import { getPatientById } from '../services/screeningService';
-import { PatientProfile } from '../types/patient';
+import type { PatientProfile } from '../types/patient';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { ArrowLeft, Calendar, User, MapPin, Eye, FileText, Stethoscope, Sparkles } from 'lucide-react';

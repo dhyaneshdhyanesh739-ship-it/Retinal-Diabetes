@@ -3,46 +3,62 @@ export type DRCategory =
   | 'Mild Non-Proliferative DR' 
   | 'Moderate Non-Proliferative DR' 
   | 'Severe DR' 
-  | 'Proliferative DR';
+  | 'Proliferative DR'
+  | 'Unassessable Image';
 
-export type RiskLevel = 'LOW' | 'MODERATE' | 'HIGH' | 'CRITICAL';
+export type ReliabilityStatus = 
+  | 'IMAGE_RECAPTURE_REQUIRED' 
+  | 'HUMAN_REVIEW_RECOMMENDED' 
+  | 'RELIABLE_SCREENING';
 
-export interface DetectedLesion {
-  type: 'Microaneurysms' | 'Hard Exudates' | 'Hemorrhages' | 'Cotton Wool Spots' | 'Venous Beading';
+export interface ClassProbability {
+  class_id: number;
+  name: string;
+  prob: number;
+}
+
+export interface LesionEvidence {
+  type: string;
   count: number;
   severity: string;
   confidence: number;
-  coordinates: { x: number; y: number };
 }
 
-export interface ExplainableAIOutput {
-  gradCAMAttentionRegion: string;
-  attentionIntensityScore: number;
-  detectedLesions: DetectedLesion[];
-  vesselDensityIndex: string;
-  xaiSummary: string;
-}
-
-export interface ScreeningResultData {
-  screeningId: string;
-  timestamp: string;
-  imageQualityScore: number;
-  imageQualityStatus: 'OPTIMAL' | 'ACCEPTABLE' | 'POOR';
-  eyeSide: string;
-  aiResult: {
-    category: DRCategory;
-    confidence: number;
-    riskLevel: RiskLevel;
-    referralRecommended: boolean;
+export interface FullScreeningResponse {
+  case_id: string;
+  quality: {
+    score: number;
+    status: 'GOOD' | 'POOR';
+    recapture_message: string | null;
   };
-  explainableAI: ExplainableAIOutput;
-  clinicalDisclaimer: string;
+  prediction: {
+    class_id: number;
+    grade_name: string;
+    short_code: string;
+  };
+  probabilities: ClassProbability[];
+  calibrated_confidence: number;
+  gradcam: {
+    attention_quadrant: string;
+    heatmap_overlay_url: string | null;
+    intensity_score: number;
+  };
+  lesion_evidence: LesionEvidence[];
+  reliability: {
+    status: ReliabilityStatus;
+    badge_color: 'GREEN' | 'AMBER' | 'RED';
+    uncertainty_margin: number;
+    explanation: string;
+  };
+  triage: {
+    screening_recommendation: string;
+    referral_urgency: string;
+  };
+  report_data: {
+    timestamp: string;
+    disclaimer: string;
+  };
 }
 
-export interface ScreeningProgressStep {
-  id: number;
-  label: string;
-  description: string;
-  completed: boolean;
-  active: boolean;
-}
+// Legacy type alias for backwards compatibility
+export interface ScreeningResultData extends FullScreeningResponse {}
